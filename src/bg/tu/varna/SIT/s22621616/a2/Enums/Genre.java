@@ -1,4 +1,4 @@
-package bg.tu.varna.SIT.s22621616.a2;
+package bg.tu.varna.SIT.s22621616.a2.Enums;
 
 public enum Genre {
     HORROR,
