@@ -1,15 +1,15 @@
-package bg.tu.varna.SIT.s22621616.a2.Entities.Builders;
+package bg.tu.varna.SIT.s22621616.a2.entities.builders;
 
-import bg.tu.varna.SIT.s22621616.a2.Enums.Genre;
-import bg.tu.varna.SIT.s22621616.a2.Enums.Keywords;
+import bg.tu.varna.SIT.s22621616.a2.enums.Genre;
+import bg.tu.varna.SIT.s22621616.a2.enums.Keywords;
 
 import java.util.List;
 
-public class Book {
+public class BookBuilder {
     private String author;
     private String title;
-   private Genre genre;
-   private String description;
+    private Genre genre;
+    private String description;
     private List<Keywords> keywords;
     private int yearOfRelease;
     private double rating;
@@ -110,12 +110,12 @@ public class Book {
             this.yearOfRelease = yearOfRelease;
         }
 
-        public Book build() {
-            return new Book(this);
+        public BookBuilder build() {
+            return new BookBuilder(this);
         }
     }
-
-    public Book(Builder builder) {
+    
+    public BookBuilder(Builder builder) {
         this.author = builder.getAuthor();
         this.title = builder.getTitle();
         this.genre = builder.getGenre();
@@ -125,6 +125,7 @@ public class Book {
         this.rating = builder.getRating();
         this.id = builder.getId();
     }
+
 
     public String getAuthor() {
         return author;
@@ -156,5 +157,22 @@ public class Book {
 
     public String getId() {
         return id;
+    }
+
+    public void addKeywords(List<Keywords> keywords) {
+        for (Keywords keyword : keywords) {
+            this.getKeywords().add(keyword);
+        }
+    }
+
+    public void removeKeyWords(List<Keywords> keywords) {
+        for (Keywords keyword: keywords) {
+            for(int i = 0; i < this.getKeywords().toArray().length; i++) {
+                Keywords currentKeyword = this.getKeywords().get(i);
+                if(currentKeyword == keyword){
+                    this.getKeywords().remove(currentKeyword);
+                }
+            }
+        }
     }
 }
