@@ -1,7 +1,7 @@
-package bg.tu.varna.SIT.s22621616.a2.entities.singletons;
+package bg.tu.varna.SIT.s22621616.a2.entities.user.menu;
 
-import bg.tu.varna.SIT.s22621616.a2.entities.normal.User;
-import bg.tu.varna.SIT.s22621616.a2.enums.MenuOptions;
+import bg.tu.varna.SIT.s22621616.a2.entities.library.LibraryInstance;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 
 import java.util.Objects;
 import java.util.Scanner;

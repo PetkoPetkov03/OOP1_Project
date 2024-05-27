@@ -1,4 +1,4 @@
-package bg.tu.varna.SIT.s22621616.a2.entities.normal;
+package bg.tu.varna.SIT.s22621616.a2.entities.user.authorization;
 
 public abstract class BaseUser {
     private String username;

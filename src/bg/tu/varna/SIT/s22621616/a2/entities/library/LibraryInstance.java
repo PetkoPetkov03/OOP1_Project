@@ -1,6 +1,4 @@
-package bg.tu.varna.SIT.s22621616.a2.entities.singletons;
-
-import bg.tu.varna.SIT.s22621616.a2.entities.builders.BookBuilder;
+package bg.tu.varna.SIT.s22621616.a2.entities.library;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +10,7 @@ public class LibraryInstance {
     private final Library library;
 
     LibraryInstance(){
-        library = new Library(new HashMap<String, BookBuilder>());
+        library = new Library(new HashMap<String, Book>());
     }
 
     public static LibraryInstance getInstance() {
@@ -29,7 +27,7 @@ public class LibraryInstance {
     public boolean addBooks() {
         Scanner scanner = new Scanner(System.in);
 
-        List<BookBuilder> books = new ArrayList<BookBuilder>();
+        List<Book> books = new ArrayList<Book>();
 
         System.out.println("How many books do you wish to add?");
 

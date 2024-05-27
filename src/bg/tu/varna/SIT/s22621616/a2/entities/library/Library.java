@@ -1,25 +1,23 @@
-package bg.tu.varna.SIT.s22621616.a2.entities.singletons;
-
-import bg.tu.varna.SIT.s22621616.a2.entities.builders.BookBuilder;
+package bg.tu.varna.SIT.s22621616.a2.entities.library;
 
 import java.util.HashMap;
 
 public class Library {
-    HashMap<String, BookBuilder> books;
+    HashMap<String, Book> books;
 
-    public HashMap<String, BookBuilder> getBooks() {
+    public HashMap<String, Book> getBooks() {
         return books;
     }
 
-    public void setBooks(HashMap<String, BookBuilder> books) {
+    public void setBooks(HashMap<String, Book> books) {
         this.books = books;
     }
 
-    public Library(HashMap<String, BookBuilder> books) {
+    public Library(HashMap<String, Book> books) {
         setBooks(books);
     }
 
-    public void addBook(BookBuilder book) {
+    public void addBook(Book book) {
         getBooks().put(book.getId(), book);
     }
 
@@ -29,7 +27,7 @@ public class Library {
         });
     }
 
-    public BookBuilder findBook(String id) {
+    public Book findBook(String id) {
         return getBooks().getOrDefault(id, null);
     }
 }

@@ -1,6 +1,4 @@
-package bg.tu.varna.SIT.s22621616.a2.entities.normal;
-
-import bg.tu.varna.SIT.s22621616.a2.enums.Authorization;
+package bg.tu.varna.SIT.s22621616.a2.entities.user.authorization;
 
 public class User extends BaseUser {
     private Authorization authorization;
