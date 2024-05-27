@@ -1,9 +1,6 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.library;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
 
 public class LibraryInstance {
     private static LibraryInstance instance;
@@ -24,34 +21,14 @@ public class LibraryInstance {
         return library;
     }
 
-    public boolean addBooks() {
-        Scanner scanner = new Scanner(System.in);
+    public boolean addBooks(Book interfaceResponse) {
 
-        List<Book> books = new ArrayList<Book>();
+        boolean response = getLibrary().addBook(interfaceResponse);
 
-        System.out.println("How many books do you wish to add?");
+        return response;
+    }
 
-        if(!scanner.hasNextLine()) {
-            return false;
-        }
-
-        int numOfBooks = Integer.parseInt(scanner.nextLine());
-
-        boolean integrity = true;
-
-        for(int i = 0; i < numOfBooks; i++) {
-
-            String input;
-            System.out.println("For (optional) values you can type '!!' to generate the default value!");
-            System.out.println("Title of the book: ");
-
-            if(!scanner.hasNextLine()) {
-                return false;
-            }
-
-            input = scanner.nextLine();
-        }
-
-        return true;
+    public void displayBooks() {
+        getLibrary().printBooks();
     }
 }

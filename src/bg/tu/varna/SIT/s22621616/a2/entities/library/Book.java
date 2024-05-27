@@ -3,6 +3,7 @@ package bg.tu.varna.SIT.s22621616.a2.entities.library;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Book {
     private String author;
@@ -11,34 +12,11 @@ public class Book {
     private String description;
     private List<Keywords> keywords;
     private int yearOfRelease;
-    private double rating;
-    private int usersRated;
+    private double rating = 0;
+    private int usersRated = 0;
     private String id;
 
-    public Book(String author, String title, Genre genre, String description,
-                int yearOfRelease) {
-        this.author = author;
-        this.title = title;
-        this.genre = genre;
-        this.description = description;
-        this.yearOfRelease = yearOfRelease;
-        this.id = genId();
-        this.keywords = new ArrayList<>();
-        this.rating = 0;
-        this.usersRated = 0;
-    }
-
-    public Book(String author, String title, Genre genre, String description,
-                int yearOfRelease, String id, List<Keywords> keywords, double rating, int usersRated) {
-        this.author = author;
-        this.title = title;
-        this.genre = genre;
-        this.description = description;
-        this.yearOfRelease = yearOfRelease;
-        this.id = id;
-    }
-
-    private String genId() {
+    public String genId() {
         String range = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz1234567890";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
@@ -119,5 +97,50 @@ public class Book {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void addKeyword(Keywords keyword) {
+        getKeywords().add(keyword);
+    }
+
+    public Book userFill() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Add a book");
+
+        Book book = new Book();
+
+        System.out.print("Author: ");
+        book.setAuthor(scanner.nextLine());
+
+        System.out.print("Book Title: ");
+        book.setTitle(scanner.nextLine());
+
+        System.out.println("valid genres!");
+        for(Genre genre: Genre.values()) {
+            System.out.println(genre.name());
+        }
+
+        System.out.print("Genre: ");
+        book.setGenre(Genre.valueOf(scanner.nextLine().toUpperCase()));
+
+        System.out.print("Year of release: ");
+        book.setYearOfRelease(Integer.parseInt(scanner.nextLine()));
+
+        System.out.print("Description: ");
+        book.setDescription(scanner.nextLine());
+
+        System.out.println("Add keywords");
+        for(Keywords keyword: Keywords.values()) {
+            System.out.println(keyword.name());
+        }
+        System.out.print("How many keywords do you wish to add?");
+        for(int i = 0; i < Integer.parseInt(scanner.nextLine()); i++) {
+            System.out.print("Add keyword: ");
+            book.addKeyword(Keywords.valueOf(scanner.nextLine().toUpperCase()));
+        }
+
+        book.setId(book.genId());
+
+        return book;
     }
 }

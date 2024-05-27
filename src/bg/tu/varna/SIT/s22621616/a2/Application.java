@@ -8,6 +8,6 @@ public class Application {
         InterfaceInstance interfaceInstance = InterfaceInstance.getInstance();
 
 
-        interfaceInstance.run(true);
+        interfaceInstance.run();
     }
 }

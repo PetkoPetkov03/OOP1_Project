@@ -7,8 +7,10 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class InterfaceInstance {
+    private boolean running = true;
     private User user;
     private static InterfaceInstance interfaceInstance;
+    private Menu menu = new Menu();
     private static LibraryInstance libraryInstance;
 
     public InterfaceInstance() {
@@ -16,35 +18,58 @@ public class InterfaceInstance {
     }
 
     public static InterfaceInstance getInstance() {
-        if(interfaceInstance == null) {
+        if (interfaceInstance == null) {
             interfaceInstance = new InterfaceInstance();
         }
 
         libraryInstance = LibraryInstance.getInstance();
-
         return interfaceInstance;
     }
 
-    private boolean logIn(String username, String password) {
-        return false;
+    public boolean isRunning() {
+        return running;
     }
 
-    public void run(boolean running) {
-        while (running) {
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public static InterfaceInstance getInterfaceInstance() {
+        return interfaceInstance;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public static LibraryInstance getLibraryInstance() {
+        return libraryInstance;
+    }
+
+    public void run() {
+        while (isRunning()) {
+            getMenu().display();
             Scanner scanner = new Scanner(System.in);
-            String command = "";
 
-            if(scanner.hasNext()){
-                command = scanner.nextLine();
+            if(!scanner.hasNext()) {
+                throw new NullPointerException("Couldn't find a command!");
             }
 
-            if(command.equalsIgnoreCase(MenuOptions.ADD.name())) {
-                libraryInstance.addBooks();
-            }
+            getMenu().setOption(scanner.nextLine());
 
-            if(Objects.equals(command.toLowerCase(), MenuOptions.EXIT.name().toLowerCase())) {
-                running = false;
-            }
+            getMenu().execute();
         }
     }
 }

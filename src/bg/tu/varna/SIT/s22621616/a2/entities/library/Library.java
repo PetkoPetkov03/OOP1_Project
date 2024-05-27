@@ -17,8 +17,10 @@ public class Library {
         setBooks(books);
     }
 
-    public void addBook(Book book) {
+    public boolean addBook(Book book) {
         getBooks().put(book.getId(), book);
+
+        return true;
     }
 
     public void printBooks() {

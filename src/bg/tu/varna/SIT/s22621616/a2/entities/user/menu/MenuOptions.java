@@ -7,6 +7,6 @@ public enum MenuOptions {
     SAVE_AS,
     HELP,
     EXIT,
-    ADD,
+    ADD_A_BOOK,
     SHOW,
 }
