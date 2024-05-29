@@ -4,7 +4,7 @@ import bg.tu.varna.SIT.s22621616.a2.entities.libs.Translator;
 
 public class MenuDisplayHelpState implements MenuState {
 
-    public void display() {
+    private void display() {
         for(MenuOptions menuOption: MenuOptions.values()) {
             System.out.print(Translator.translateEnumToUserString(menuOption) + "\t\t\t");
             System.out.println(menuOption.name());

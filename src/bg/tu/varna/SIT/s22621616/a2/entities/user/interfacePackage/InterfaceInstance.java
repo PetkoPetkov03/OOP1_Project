@@ -8,15 +8,21 @@ import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuOpti
 
 import java.util.Scanner;
 
-public class InterfaceInstance {
-    private boolean running = true;
-    private User user;
+public class InterfaceInstance implements UserInterface {
     private static InterfaceInstance interfaceInstance;
-    private MenuContext menu = new MenuContext();
-    private static LibraryInstance libraryInstance;
+    private Interface userInterface;
 
-    public InterfaceInstance() {
-        this.user = null;
+
+    public Interface getUserInterface() {
+        return userInterface;
+    }
+
+    public void setUserInterface(Interface userInterface) {
+        this.userInterface = userInterface;
+    }
+
+    private InterfaceInstance() {
+        this.userInterface = new Interface();
     }
 
     public static InterfaceInstance getInstance() {
@@ -24,40 +30,11 @@ public class InterfaceInstance {
             interfaceInstance = new InterfaceInstance();
         }
 
-        libraryInstance = LibraryInstance.getInstance();
         return interfaceInstance;
-    }
-
-    public boolean isRunning() {
-        return running;
-    }
-
-    public void setRunning(boolean running) {
-        this.running = running;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public static InterfaceInstance getInterfaceInstance() {
         return interfaceInstance;
-    }
-
-    public MenuContext getMenu() {
-        return menu;
-    }
-
-    public void setMenu(MenuContext menu) {
-        this.menu = menu;
-    }
-
-    public static LibraryInstance getLibraryInstance() {
-        return libraryInstance;
     }
 
     public void run() {
@@ -72,5 +49,65 @@ public class InterfaceInstance {
 
             getMenu().execute();
         }
+    }
+
+    /**
+     * Check if the interface should be running
+     *
+     * @return Interface running
+     */
+    @Override
+    public boolean isRunning() {
+        return getUserInterface().isRunning();
+    }
+
+    /**
+     * Set the state of the interface
+     *
+     * @param running gets the current value of the state of the interface
+     */
+    @Override
+    public void setRunning(boolean running) {
+        getUserInterface().setRunning(!isRunning());
+    }
+
+    /**
+     * Fetch Menu
+     *
+     * @return Interface userMenu
+     */
+    @Override
+    public MenuContext getMenu() {
+        return getUserInterface().getMenu();
+    }
+
+    /**
+     * Fetch user
+     *
+     * @return Interface user
+     */
+    @Override
+    public User getUser() {
+        return getUserInterface().getUser();
+    }
+
+    /**
+     * Set the current user
+     *
+     * @param user
+     */
+    @Override
+    public void setUser(User user) {
+        getUserInterface().setUser(user);
+    }
+
+    /**
+     * Get the library instance through Interface
+     *
+     * @return Interface libraryInstance
+     */
+    @Override
+    public LibraryInstance getLibraryInstance() {
+        return getUserInterface().getLibraryInstance();
     }
 }
