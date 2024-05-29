@@ -1,16 +1,16 @@
-package bg.tu.varna.SIT.s22621616.a2.entities.user.menu;
+package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage;
 
 import bg.tu.varna.SIT.s22621616.a2.entities.library.LibraryInstance;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuContext;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class InterfaceInstance {
     private boolean running = true;
     private User user;
     private static InterfaceInstance interfaceInstance;
-    private Menu menu = new Menu();
+    private MenuContext menu = new MenuContext();
     private static LibraryInstance libraryInstance;
 
     public InterfaceInstance() {
@@ -46,11 +46,11 @@ public class InterfaceInstance {
         return interfaceInstance;
     }
 
-    public Menu getMenu() {
+    public MenuContext getMenu() {
         return menu;
     }
 
-    public void setMenu(Menu menu) {
+    public void setMenu(MenuContext menu) {
         this.menu = menu;
     }
 
@@ -60,14 +60,15 @@ public class InterfaceInstance {
 
     public void run() {
         while (isRunning()) {
-            getMenu().display();
+            getMenu().setMenuState("help");
+            getMenu().execute();
             Scanner scanner = new Scanner(System.in);
 
             if(!scanner.hasNext()) {
                 throw new NullPointerException("Couldn't find a command!");
             }
 
-            getMenu().setOption(scanner.nextLine());
+            getMenu().setMenuState(scanner.nextLine());
 
             getMenu().execute();
         }
