@@ -47,7 +47,7 @@ public class InterfaceInstance implements UserInterface {
 
             getMenu().setMenuState(Translator.translateUserStringToEnum(MenuOptions.class, scanner.nextLine()));
 
-            getMenu().execute();
+            getMenu().execute(getUser());
         }
     }
 

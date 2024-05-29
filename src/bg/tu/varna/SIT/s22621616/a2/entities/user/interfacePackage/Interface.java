@@ -1,12 +1,13 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage;
 
 import bg.tu.varna.SIT.s22621616.a2.entities.library.LibraryInstance;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.Authorization;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuContext;
 
 public class Interface implements UserInterface {
     private boolean running = true;
-    private User user = null;
+    private User user = new User("Petko", "123", Authorization.ADMIN);
     private final MenuContext menu = new MenuContext();
 
     /**

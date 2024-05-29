@@ -3,12 +3,9 @@ package bg.tu.varna.SIT.s22621616.a2.entities.user.authorization;
 public class User extends BaseUser {
     private Authorization authorization;
 
-    public User(String username, String password, boolean isAdmin) {
+    public User(String username, String password, Authorization authorization) {
         super(username, password);
-        this.authorization = Authorization.BASIC;
-        if(isAdmin) {
-            this.authorization = Authorization.ADMIN;
-        }
+        this.authorization = authorization;
     }
 
     public Authorization getAuthorization() {

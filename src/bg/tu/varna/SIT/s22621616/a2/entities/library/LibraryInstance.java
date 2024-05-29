@@ -1,5 +1,7 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.library;
 
+import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
+
 import java.util.HashMap;
 
 public class LibraryInstance {
@@ -7,7 +9,7 @@ public class LibraryInstance {
     private final Library library;
 
     LibraryInstance(){
-        library = new Library(new HashMap<String, Book>());
+        library = new Library(new HashMap<String, BookStructure>());
     }
 
     public static LibraryInstance getInstance() {
@@ -21,11 +23,12 @@ public class LibraryInstance {
         return library;
     }
 
-    public boolean addBooks(Book interfaceResponse) {
+    public void addBook(User user) {
+        getLibrary().addBook(user);
+    }
 
-        boolean response = getLibrary().addBook(interfaceResponse);
-
-        return response;
+    public void bookInfo(User user) {
+        getLibrary().bookInfo(user);
     }
 
     public void displayBooks() {

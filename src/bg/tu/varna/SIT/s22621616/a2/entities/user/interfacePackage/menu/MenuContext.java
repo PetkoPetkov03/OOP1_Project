@@ -1,5 +1,7 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu;
 
+import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
+
 public class MenuContext implements MenuState {
     private MenuState menuState;
 
@@ -33,8 +35,8 @@ public class MenuContext implements MenuState {
      * execute command depending on the menu state.
      */
     @Override
-    public void execute() {
-        this.menuState.execute();
+    public void execute(User user) {
+        this.menuState.execute(user);
     }
 
     /**

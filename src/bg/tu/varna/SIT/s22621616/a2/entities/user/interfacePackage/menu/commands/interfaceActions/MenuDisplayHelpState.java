@@ -1,6 +1,9 @@
-package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu;
+package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.interfaceActions;
 
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Translator;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuOptions;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuState;
 
 public class MenuDisplayHelpState implements MenuState {
 
@@ -15,7 +18,7 @@ public class MenuDisplayHelpState implements MenuState {
      * execute command depending on the menu state.
      */
     @Override
-    public void execute() {
+    public void execute(User user) {
         display();
     }
 
