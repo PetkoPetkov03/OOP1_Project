@@ -1,5 +1,8 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.library;
 
+import bg.tu.varna.SIT.s22621616.a2.entities.libs.Translator;
+
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,7 +13,7 @@ public class Book {
     private String title;
     private Genre genre;
     private String description;
-    private List<Keywords> keywords;
+    private List<Keywords> keywords = new ArrayList<>();
     private int yearOfRelease;
     private double rating = 0;
     private int usersRated = 0;
@@ -121,7 +124,7 @@ public class Book {
         }
 
         System.out.print("Genre: ");
-        book.setGenre(Genre.valueOf(scanner.nextLine().toUpperCase()));
+        book.setGenre(Translator.translateUserStringToEnum(Genre.class, scanner.nextLine()));
 
         System.out.print("Year of release: ");
         book.setYearOfRelease(Integer.parseInt(scanner.nextLine()));
@@ -136,7 +139,7 @@ public class Book {
         System.out.print("How many keywords do you wish to add?");
         for(int i = 0; i < Integer.parseInt(scanner.nextLine()); i++) {
             System.out.print("Add keyword: ");
-            book.addKeyword(Keywords.valueOf(scanner.nextLine().toUpperCase()));
+            book.addKeyword(Translator.translateUserStringToEnum(Keywords.class, scanner.nextLine()));
         }
 
         book.setId(book.genId());

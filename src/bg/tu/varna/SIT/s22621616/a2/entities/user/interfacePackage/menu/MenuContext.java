@@ -21,15 +21,12 @@ public class MenuContext implements MenuState {
         return finalMenuOption;
     }
 
-    public void setMenuState(String option) {
-
-        MenuState mOption = convertOption(option);
-
-        if (mOption == null) {
+    public void setMenuState(MenuOptions option) {
+        if (option == null) {
             throw new NullPointerException("No such command found!");
         }
 
-        this.menuState = mOption;
+        this.menuState = option.getState();
     }
 
     /**

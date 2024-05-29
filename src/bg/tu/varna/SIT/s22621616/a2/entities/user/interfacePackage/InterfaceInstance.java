@@ -1,8 +1,10 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage;
 
 import bg.tu.varna.SIT.s22621616.a2.entities.library.LibraryInstance;
+import bg.tu.varna.SIT.s22621616.a2.entities.libs.Translator;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuContext;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuOptions;
 
 import java.util.Scanner;
 
@@ -60,15 +62,13 @@ public class InterfaceInstance {
 
     public void run() {
         while (isRunning()) {
-            getMenu().setMenuState("help");
-            getMenu().execute();
             Scanner scanner = new Scanner(System.in);
 
             if(!scanner.hasNext()) {
                 throw new NullPointerException("Couldn't find a command!");
             }
 
-            getMenu().setMenuState(scanner.nextLine());
+            getMenu().setMenuState(Translator.translateUserStringToEnum(MenuOptions.class, scanner.nextLine()));
 
             getMenu().execute();
         }
