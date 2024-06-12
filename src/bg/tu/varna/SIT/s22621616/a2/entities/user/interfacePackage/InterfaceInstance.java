@@ -1,6 +1,7 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage;
 
 import bg.tu.varna.SIT.s22621616.a2.entities.library.LibraryInstance;
+import bg.tu.varna.SIT.s22621616.a2.entities.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Translator;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuContext;
@@ -10,15 +11,11 @@ import java.util.Scanner;
 
 public class InterfaceInstance implements UserInterface {
     private static InterfaceInstance interfaceInstance;
-    private Interface userInterface;
+    private final Interface userInterface;
 
 
     public Interface getUserInterface() {
         return userInterface;
-    }
-
-    public void setUserInterface(Interface userInterface) {
-        this.userInterface = userInterface;
     }
 
     private InterfaceInstance() {
@@ -33,21 +30,19 @@ public class InterfaceInstance implements UserInterface {
         return interfaceInstance;
     }
 
-    public static InterfaceInstance getInterfaceInstance() {
-        return interfaceInstance;
-    }
-
     public void run() {
         while (isRunning()) {
+            Tokenizer tokenizer = new Tokenizer();
             Scanner scanner = new Scanner(System.in);
 
             if(!scanner.hasNext()) {
                 throw new NullPointerException("Couldn't find a command!");
             }
 
-            getMenu().setMenuState(Translator.translateUserStringToEnum(MenuOptions.class, scanner.nextLine()));
+            tokenizer.parse(scanner.nextLine());
+            getMenu().setMenuState(tokenizer.getOption());
 
-            getMenu().execute(getUser());
+            getMenu().execute(tokenizer, getUser());
         }
     }
 

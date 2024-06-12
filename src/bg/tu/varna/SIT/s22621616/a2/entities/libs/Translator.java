@@ -7,6 +7,10 @@ public abstract class Translator {
     }
 
     public static <T extends Enum<T>> T translateUserStringToEnum(Class<T> enumClass, String userString) {
-        return Enum.valueOf(enumClass, userString.replace(" ", "_").toUpperCase());
+        try{
+            return Enum.valueOf(enumClass, userString.replace(" ", "_").toUpperCase());
+        }catch (IllegalArgumentException | NullPointerException e) {
+            return null;
+        }
     }
 }

@@ -16,5 +16,5 @@ public interface Book {
      */
     BookStructure build();
 
-    void bookInfo(User user);
+    void bookInfo(String id, User user);
 }

@@ -27,8 +27,8 @@ public class LibraryInstance {
         getLibrary().addBook(user);
     }
 
-    public void bookInfo(User user) {
-        getLibrary().bookInfo(user);
+    public void bookInfo(String id, User user) {
+        getLibrary().bookInfo(id, user);
     }
 
     public void displayBooks() {

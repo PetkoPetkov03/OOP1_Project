@@ -31,7 +31,7 @@ public class Library implements Book {
         });
     }
 
-    public Book findBook(String id) {
+    private Book findBook(String id) {
         return getBooks().getOrDefault(id, null);
     }
 
@@ -60,15 +60,13 @@ public class Library implements Book {
     }
 
     @Override
-    public void bookInfo(User user) {
-        System.out.println("Id: ");
-        String id;
-        Scanner scanner = new Scanner(System.in);
-
-        id = scanner.nextLine();
-
+    public void bookInfo(String id, User user) {
         BookStructure book = (BookStructure) findBook(id);
 
-        book.bookInfo(user);
+        if(book == null) {
+            throw new RuntimeException(String.format("Book with id: %s doesn't exist!", id));
+        }
+
+        book.bookInfo(id, user);
     }
 }

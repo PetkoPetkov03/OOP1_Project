@@ -128,7 +128,11 @@ public class BookStructure implements Book {
         }
 
         System.out.print("Genre: ");
-        book.setGenre(Translator.translateUserStringToEnum(Genre.class, scanner.nextLine()));
+        Genre genre =  Translator.translateUserStringToEnum(Genre.class, scanner.nextLine());
+        if(genre == null) {
+            throw new RuntimeException("Non valid genre!");
+        }
+        book.setGenre(genre);
 
         System.out.print("Year of release: ");
         book.setYearOfRelease(Integer.parseInt(scanner.nextLine()));
@@ -162,7 +166,7 @@ public class BookStructure implements Book {
     }
 
     @Override
-    public void bookInfo(User user) {
+    public void bookInfo(String id, User user) {
         System.out.println(this.toString());
     }
 
