@@ -34,4 +34,8 @@ public class LibraryInstance {
     public void displayBooks() {
         getLibrary().printBooks();
     }
+
+    public void sort() {
+        getLibrary().sort();
+    }
 }

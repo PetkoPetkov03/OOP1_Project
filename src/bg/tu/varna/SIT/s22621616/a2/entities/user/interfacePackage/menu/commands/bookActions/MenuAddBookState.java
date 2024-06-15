@@ -32,4 +32,9 @@ public class MenuAddBookState implements MenuState {
     public MenuState getState() {
         return this;
     }
+
+    @Override
+    public int getImportance() {
+        throw new UnsupportedOperationException("Importance is not assigned to a state action");
+    }
 }

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Library implements Book {
-    HashMap<String, BookStructure> books;
+    private HashMap<String, BookStructure> books;
 
     public HashMap<String, BookStructure> getBooks() {
         return books;
@@ -68,5 +68,9 @@ public class Library implements Book {
         }
 
         book.bookInfo(id, user);
+    }
+
+    public void sort() {
+
     }
 }

@@ -7,7 +7,7 @@ import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuStat
 
 public class MenuDisplayBooksState implements MenuState {
 
-    public void display() {
+    private void display() {
         LibraryInstance.getInstance().displayBooks();
     }
 
@@ -25,5 +25,10 @@ public class MenuDisplayBooksState implements MenuState {
     @Override
     public MenuState getState() {
         return this;
+    }
+
+    @Override
+    public int getImportance() {
+        throw new UnsupportedOperationException("Importance is not assigned to a state action");
     }
 }

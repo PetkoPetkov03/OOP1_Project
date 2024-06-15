@@ -2,8 +2,9 @@ package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu;
 
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.MenuOptions;
 
-public class MenuContext implements MenuState {
+public class MenuContext {
     private MenuState menuState;
 
     public void setMenuState(MenuOptions option) {
@@ -17,7 +18,6 @@ public class MenuContext implements MenuState {
     /**
      * execute command depending on the menu state.
      */
-    @Override
     public void execute(Tokenizer tokenizer, User user) {
         this.menuState.execute(tokenizer, user);
     }
@@ -25,7 +25,6 @@ public class MenuContext implements MenuState {
     /**
      * @return MenuState instance
      */
-    @Override
     public MenuState getState() {
         return this.menuState;
     }

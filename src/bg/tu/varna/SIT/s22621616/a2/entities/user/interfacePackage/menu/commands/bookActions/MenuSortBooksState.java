@@ -5,23 +5,23 @@ import bg.tu.varna.SIT.s22621616.a2.entities.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuState;
 
-import java.util.List;
+public class MenuSortBooksState implements MenuState {
 
-public class MenuBookInfo implements MenuState {
+    private void sort(Tokenizer tokenizer, User user) {
+        LibraryInstance libraryInstance = LibraryInstance.getInstance();
+
+        libraryInstance.sort();
+    }
+
     /**
      * execute command depending on the menu state.
+     *
+     * @param tokenizer
+     * @param user
      */
     @Override
     public void execute(Tokenizer tokenizer, User user) {
-        LibraryInstance libraryInstance = LibraryInstance.getInstance();
-
-        List<String> inputs = tokenizer.getInputs();
-
-        if(inputs.isEmpty() && inputs.size() != 1) {
-            throw new RuntimeException("empty token list or wrong number of tokens");
-        }
-
-        libraryInstance.bookInfo(inputs.getFirst(), user);
+        sort(tokenizer, user);
     }
 
     /**
