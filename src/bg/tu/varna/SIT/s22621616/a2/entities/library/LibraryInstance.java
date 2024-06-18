@@ -41,4 +41,8 @@ public class LibraryInstance {
     public void sort(Tokenizer tokenizer) {
         getLibrary().sort(tokenizer);
     }
+
+    public void findBooksByParameter(Tokenizer tokenizer) {
+        getLibrary().findBooksByParameter(tokenizer);
+    }
 }

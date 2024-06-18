@@ -80,7 +80,12 @@ public class Tokenizer {
             throw new InputMismatchException("Option not found");
         }
 
+        while(inputs.contains("")) {
+            inputs.remove("");
+        }
+
         this.inputs.addAll(List.of(args));
+        this.inputs.removeIf(String::isEmpty);
     }
 
     private boolean optionParsed() {
