@@ -13,8 +13,8 @@ import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands
 public enum MenuOptions implements State {
     OPEN {
         @Override
-        public int getImportance() {
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private final Authorization authorization = null;
@@ -37,8 +37,8 @@ public enum MenuOptions implements State {
     },
     CLOSE {
         @Override
-        public int getImportance() {
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private State getInstance() {
@@ -55,8 +55,8 @@ public enum MenuOptions implements State {
     },
     SAVE {
         @Override
-        public int getImportance() {
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private final Authorization authorization = null;
@@ -78,9 +78,8 @@ public enum MenuOptions implements State {
     },
     SAVE_AS {
         @Override
-        public int getImportance() {
-
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private final Authorization authorization = null;
@@ -103,8 +102,8 @@ public enum MenuOptions implements State {
     },
     HELP {
         @Override
-        public int getImportance() {
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private final Authorization authorization = null;
@@ -127,9 +126,8 @@ public enum MenuOptions implements State {
     },
     EXIT {
         @Override
-        public int getImportance() {
-
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private final Authorization authorization = null;
@@ -151,9 +149,8 @@ public enum MenuOptions implements State {
     },
     BOOKS_ADD {
         @Override
-        public int getImportance() {
-
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private final Authorization authorization = Authorization.ADMIN;
@@ -175,9 +172,8 @@ public enum MenuOptions implements State {
     },
     BOOKS_ALL {
         @Override
-        public int getImportance() {
-
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private final Authorization authorization = Authorization.BASIC;
@@ -201,9 +197,8 @@ public enum MenuOptions implements State {
 
     BOOKS_INFO {
         @Override
-        public int getImportance() {
-
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private final Authorization authorization = Authorization.BASIC;
@@ -227,8 +222,8 @@ public enum MenuOptions implements State {
 
     BOOKS_SORT {
         @Override
-        public int getImportance() {
-            return 0;
+        public CommandImportance getImportance() {
+            return CommandImportance.PRIMARY;
         }
 
         private final Authorization authorization = Authorization.BASIC;

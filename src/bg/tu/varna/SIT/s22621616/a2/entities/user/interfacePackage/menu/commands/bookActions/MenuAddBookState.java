@@ -5,6 +5,7 @@ import bg.tu.varna.SIT.s22621616.a2.entities.library.LibraryInstance;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuState;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.CommandImportance;
 
 public class MenuAddBookState implements MenuState {
 
@@ -34,7 +35,7 @@ public class MenuAddBookState implements MenuState {
     }
 
     @Override
-    public int getImportance() {
+    public CommandImportance getImportance() {
         throw new UnsupportedOperationException("Importance is not assigned to a state action");
     }
 }

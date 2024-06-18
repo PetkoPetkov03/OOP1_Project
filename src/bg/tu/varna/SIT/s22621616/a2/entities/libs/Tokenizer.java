@@ -1,6 +1,7 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.libs;
 
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.Command;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.CommandImportance;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.MenuOptions;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.SubCommands;
 
@@ -86,7 +87,7 @@ public class Tokenizer {
         boolean flag = false;
 
         for(Command command : commands) {
-            if(command.getImportance() == 0) {
+            if(command.getImportance().equals(CommandImportance.PRIMARY)) {
                 flag = true;
             }
         }
@@ -97,7 +98,7 @@ public class Tokenizer {
     public MenuOptions getCommand() {
         Command command = null;
         for(Command command1 : commands) {
-            if(command1.getImportance() == 0) {
+            if(command1.getImportance().equals(CommandImportance.PRIMARY)) {
                 command = command1;
             }
         }
@@ -105,15 +106,29 @@ public class Tokenizer {
         return (MenuOptions) command;
     }
 
-    public List<SubCommands> getSubCommands() {
-        List<SubCommands> subCommands = new ArrayList<>();
+    public SubCommands getSubCommand() {
+        SubCommands subCommand = null;
         for(Command command : commands) {
-            if(command.getImportance() == 1) {
-                subCommands.add((SubCommands) command);
+            if(command.getImportance().equals(CommandImportance.SECONDARY)) {
+                subCommand = (SubCommands) command;
+                break;
             }
         }
 
-        return subCommands;
+        return subCommand;
+    }
+
+    public SubCommands getInstrCommand() {
+        SubCommands subCommand = null;
+
+        for(Command command: commands) {
+            if(command.getImportance().equals(CommandImportance.INSTRUCTIONAL)) {
+                subCommand = (SubCommands) command;
+                break;
+            }
+        }
+
+        return subCommand;
     }
 
     public List<String> getInputs() {

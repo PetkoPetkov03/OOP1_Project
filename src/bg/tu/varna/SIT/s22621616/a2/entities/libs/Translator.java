@@ -13,4 +13,8 @@ public abstract class Translator {
             return null;
         }
     }
+
+    public static <T extends Enum<T>> T translateUserStringToEnumNullable(Class<T> enumClass, String userString) {
+        return Enum.valueOf(enumClass, userString);
+    }
 }

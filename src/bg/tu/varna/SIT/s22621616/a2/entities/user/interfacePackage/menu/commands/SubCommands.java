@@ -3,32 +3,32 @@ package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.command
 public enum SubCommands implements Command {
     ASC {
         @Override
-        public int getImportance() {
-            return 1;
+        public CommandImportance getImportance() {
+            return CommandImportance.INSTRUCTIONAL;
         }
     },
     DESC {
         @Override
-        public int getImportance() {
-            return 1;
+        public CommandImportance getImportance() {
+            return CommandImportance.INSTRUCTIONAL;
         }
     },
     TITLE {
         @Override
-        public int getImportance() {
-            return 1;
+        public CommandImportance getImportance() {
+            return CommandImportance.SECONDARY;
         }
     },
     AUTHOR {
         @Override
-        public int getImportance() {
-            return 1;
+        public CommandImportance getImportance() {
+            return CommandImportance.SECONDARY;
         }
     },
     TAG {
         @Override
-        public int getImportance() {
-            return 1;
+        public CommandImportance getImportance() {
+            return CommandImportance.SECONDARY;
         }
     },
 }
