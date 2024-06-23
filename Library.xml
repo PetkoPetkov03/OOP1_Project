@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<List>
+  <Books>
+  <Book>   <ID>5fXhMkt8FjSjzrbkLL</ID>
+   <Title>dghjdfgj</Title>
+   <Author>Petkldfh</Author>
+   <Rating>0.0</Rating>
+   <Description>lofghj</Description>
+   <YearOfRelease>2013</YearOfRelease>
+   <Genre>HORROR</Genre>
+   <Keywords>   </Keywords>
+  </Book>
+  <Book>   <ID>PHumz411S6Ms0Cdrkg</ID>
+   <Title>sfdgsdg</Title>
+   <Author>Petko</Author>
+   <Rating>0.0</Rating>
+   <Description>lol</Description>
+   <YearOfRelease>2013</YearOfRelease>
+   <Genre>HORROR</Genre>
+   <Keywords>   </Keywords>
+  </Book>
+  </Books>
+</List>
