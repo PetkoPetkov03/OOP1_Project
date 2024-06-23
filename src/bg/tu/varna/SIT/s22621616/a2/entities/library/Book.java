@@ -8,13 +8,8 @@ public interface Book {
      * @param user User object 
      * @return new Book(...)
      */
-    BookStructure build(User user);
 
-    /**
-     * Create a book without user input
-     * @return new Book()
-     */
-    BookStructure build();
+    BookStructure build(User user);
 
     void bookInfo(String id, User user);
 }

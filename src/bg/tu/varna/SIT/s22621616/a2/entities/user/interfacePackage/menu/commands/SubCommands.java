@@ -30,5 +30,5 @@ public enum SubCommands implements Command {
         public CommandImportance getImportance() {
             return CommandImportance.SECONDARY;
         }
-    },
+    }
 }

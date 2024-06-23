@@ -7,7 +7,7 @@ import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuCont
 
 public class Interface implements UserInterface {
     private boolean running = true;
-    private User user = new User("Petko", "123", Authorization.ADMIN);
+    private User user;
     private final MenuContext menu = new MenuContext();
 
     /**
@@ -18,6 +18,14 @@ public class Interface implements UserInterface {
     @Override
     public boolean isRunning() {
         return this.running;
+    }
+
+    public void login() {
+
+    }
+
+    public void register() {
+
     }
 
     /**

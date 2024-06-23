@@ -4,6 +4,7 @@ import bg.tu.varna.SIT.s22621616.a2.entities.library.LibraryInstance;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuContext;
+import bg.tu.varna.SIT.s22621616.a2.files.FileManager;
 
 import java.util.Scanner;
 
@@ -12,6 +13,7 @@ public class InterfaceInstance implements UserInterface {
     private final Interface userInterface;
     private final Tokenizer tokenizer = new Tokenizer();
     private final Scanner scanner = new Scanner(System.in);
+    private final FileManager fileManager = new FileManager();
 
 
     public Interface getUserInterface() {
@@ -105,5 +107,9 @@ public class InterfaceInstance implements UserInterface {
     @Override
     public LibraryInstance getLibraryInstance() {
         return getUserInterface().getLibraryInstance();
+    }
+
+    public FileManager getFileManager() {
+        return fileManager;
     }
 }

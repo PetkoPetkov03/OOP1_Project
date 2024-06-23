@@ -2,6 +2,7 @@ package bg.tu.varna.SIT.s22621616.a2.entities.library;
 
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Translator;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
+import bg.tu.varna.SIT.s22621616.a2.files.XMLLibParser;
 
 import java.util.*;
 
@@ -153,16 +154,6 @@ public class BookStructure implements Book {
         book.setId(book.genId());
 
         return book;
-    }
-
-    /**
-     * Create a book without user input
-     *
-     * @return new Book()
-     */
-    @Override
-    public BookStructure build() {
-        return null;
     }
 
     @Override

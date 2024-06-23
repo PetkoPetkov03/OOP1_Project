@@ -12,7 +12,7 @@ public class MenuContext {
             throw new NullPointerException("No such command found!");
         }
 
-        this.menuState = option.getState();
+        this.menuState = (MenuState) option.getState();
     }
 
     /**

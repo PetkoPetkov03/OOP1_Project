@@ -65,17 +65,6 @@ public class Library implements Book {
         return book;
     }
 
-    /**
-     * Create a book without user input
-     *
-     * @return new Book()
-     */
-    @Override
-    public BookStructure build() {
-        return null;
-    }
-
-
 
     public void findBooksByParameter(Tokenizer tokenizer) {
         SubCommands subCommand = tokenizer.getSubCommand();
