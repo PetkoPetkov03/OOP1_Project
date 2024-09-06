@@ -7,7 +7,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * FileManager handles operations related to user and library database files.
+ * The FileManager class handles operations related to user and library database files.
+ * It provides functionality for opening, creating, and managing the XML-based databases
+ * that store user information and library data. The class ensures that necessary default
+ * data is initialized in the user database when it is created for the first time.
+ *
+ * <p>Key functionalities include:</p>
+ * <ul>
+ *     <li>Opening and initializing the user database file.</li>
+ *     <li>Creating or opening the library database file.</li>
+ *     <li>Retrieving a pair of user and library database files.</li>
+ *     <li>Closing the FileManager and releasing resources.</li>
+ * </ul>
  */
 public class FileManager {
     private File userDatabase;
@@ -26,7 +37,6 @@ public class FileManager {
                 userDatabase.createNewFile();
 
                 try (FileWriter writer = new FileWriter(userDatabase, false)) {
-                    // Initialize with default user data in XML format
                     writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
                     writer.write("<List>\n");
                     writer.write(" <Users>\n");

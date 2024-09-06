@@ -16,7 +16,17 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * XMLLibParser handles parsing and writing XML data for books and users.
+ * The XMLLibParser class handles parsing and writing XML data for books and users.
+ * This class provides methods for reading book and user data from XML files,
+ * adding new entries to these files, and converting objects into their XML representation.
+ *
+ * <p>Key functionalities include:</p>
+ * <ul>
+ *     <li>Parsing XML files to extract lists of BookStructure and User objects.</li>
+ *     <li>Adding new BookStructure and User objects to existing XML files.</li>
+ *     <li>Removing users from the XML files.</li>
+ *     <li>Converting BookStructure and User objects into XML format for storage.</li>
+ * </ul>
  */
 public class XMLLibParser {
 
@@ -46,12 +56,11 @@ public class XMLLibParser {
                 startIndex = endIndex;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
 
         return bookList;
     }
-
 
     private static BookStructure parseBook(String bookXml) {
         BookStructure book = new BookStructure();
@@ -102,7 +111,7 @@ public class XMLLibParser {
             }
             writer.write("</Books>\n");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -153,10 +162,26 @@ public class XMLLibParser {
                 startIndex = endIndex;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
 
         return userList;
+    }
+
+    /**
+     * Removes a user by their username from the XML file.
+     *
+     * @param xmlFile The XML file containing user data.
+     * @param username The username of the user to remove.
+     * @return true if the user was successfully removed, false if the user was not found.
+     */
+    public static boolean removeUserFromXML(File xmlFile, String username) {
+        List<User> userList = parseUsersXML(xmlFile);
+        boolean userRemoved = userList.removeIf(user -> user.getUsername().equals(username));
+        if (userRemoved) {
+            writeUsersToXML(xmlFile, userList);
+        }
+        return userRemoved;
     }
 
     /**
@@ -185,7 +210,7 @@ public class XMLLibParser {
             }
             writer.write("</Users>\n");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -204,6 +229,7 @@ public class XMLLibParser {
         xml.append("</User>\n");
         return xml.toString();
     }
+
     private static User parseUser(String userXml) {
         return new User(getTagValue("Username", userXml), getTagValue("Password", userXml), Authorization.valueOf(getTagValue("Auth", userXml)));
     }

@@ -1,5 +1,6 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.userActions;
 
+import bg.tu.varna.SIT.s22621616.a2.Application;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.State;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Translator;
@@ -15,6 +16,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class RegisterState implements MenuState {
     /**
@@ -25,13 +27,18 @@ public class RegisterState implements MenuState {
      */
     @Override
     public void execute(Tokenizer tokenizer, User user) {
+        List<String> inputs = tokenizer.getInputs();
+        if(inputs.size() < 2) {
+            System.out.println(Application.ANSI_RED + "Not enough inputs" + Application.RESET);
+            return;
+        }
         String username = tokenizer.getInputs().getFirst();
         String password = tokenizer.getInputs().getLast();
         Authorization authorization = Authorization.BASIC;
 
         if(user.getAuthorization().equals(Authorization.ADMIN)) {
             String authInput = tokenizer.getInputs().get(1);
-            if(Translator.translateUserStringToEnum(Authorization.class, authInput).equals(Authorization.ADMIN)) {
+            if(Objects.equals(Translator.translateUserStringToEnum(Authorization.class, authInput), Authorization.ADMIN)) {
                 authorization = Authorization.ADMIN;
             }
         }

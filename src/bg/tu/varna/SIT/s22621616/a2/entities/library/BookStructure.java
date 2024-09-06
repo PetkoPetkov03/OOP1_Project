@@ -1,12 +1,21 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.library;
 
+import bg.tu.varna.SIT.s22621616.a2.Application;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Translator;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.files.XMLLibParser;
 
 import java.util.*;
 
+import java.util.*;
+
+/**
+ * The BookStructure class implements the {@link Book} interface and represents a book object with various attributes
+ * such as author, title, genre, description, keywords, year of release, rating, and user ratings.
+ */
 public class BookStructure implements Book {
+
+    // Fields representing the book's properties.
     private String author;
     private String title;
     private Genre genre;
@@ -17,6 +26,11 @@ public class BookStructure implements Book {
     private HashMap<String, User> usersRated = new HashMap<>();
     private String id;
 
+    /**
+     * Generates a random 18-character string to be used as the unique book ID.
+     *
+     * @return A randomly generated book ID.
+     */
     public String genId() {
         String range = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz1234567890";
         StringBuilder salt = new StringBuilder();
@@ -28,6 +42,7 @@ public class BookStructure implements Book {
         return salt.toString();
     }
 
+    // Getter and setter methods for author.
     public String getAuthor() {
         return author;
     }
@@ -36,6 +51,7 @@ public class BookStructure implements Book {
         this.author = author;
     }
 
+    // Getter and setter methods for title.
     public String getTitle() {
         return title;
     }
@@ -44,6 +60,7 @@ public class BookStructure implements Book {
         this.title = title;
     }
 
+    // Getter and setter methods for genre.
     public Genre getGenre() {
         return genre;
     }
@@ -52,6 +69,7 @@ public class BookStructure implements Book {
         this.genre = genre;
     }
 
+    // Getter and setter methods for description.
     public String getDescription() {
         return description;
     }
@@ -60,6 +78,7 @@ public class BookStructure implements Book {
         this.description = description;
     }
 
+    // Getter and setter methods for keywords.
     public List<Keywords> getKeywords() {
         return keywords;
     }
@@ -68,6 +87,7 @@ public class BookStructure implements Book {
         this.keywords = keywords;
     }
 
+    // Getter and setter methods for yearOfRelease.
     public int getYearOfRelease() {
         return yearOfRelease;
     }
@@ -76,6 +96,7 @@ public class BookStructure implements Book {
         this.yearOfRelease = yearOfRelease;
     }
 
+    // Getter and setter methods for rating.
     public double getRating() {
         return rating;
     }
@@ -84,6 +105,7 @@ public class BookStructure implements Book {
         this.rating = rating;
     }
 
+    // Getter and setter methods for usersRated.
     public HashMap<String, User> getUsersRated() {
         return usersRated;
     }
@@ -92,6 +114,7 @@ public class BookStructure implements Book {
         this.usersRated = usersRated;
     }
 
+    // Getter and setter methods for id.
     public String getId() {
         return id;
     }
@@ -100,15 +123,20 @@ public class BookStructure implements Book {
         this.id = id;
     }
 
+    /**
+     * Adds a keyword to the list of keywords associated with the book.
+     *
+     * @param keyword The {@link Keywords} object to add to the keywords list.
+     */
     public void addKeyword(Keywords keyword) {
         getKeywords().add(keyword);
     }
 
     /**
-     * Create a book with user input
+     * Builds a new book based on user input by prompting the user for the book's details.
      *
-     * @param user User
-     * @return new Book(...)
+     * @param user The {@link User} object providing input for the book creation.
+     * @return A new {@link BookStructure} based on the user input.
      */
     @Override
     public BookStructure build(User user) {
@@ -123,15 +151,16 @@ public class BookStructure implements Book {
         System.out.print("Book Title: ");
         book.setTitle(scanner.nextLine());
 
-        System.out.println("valid genres!");
-        for(Genre genre: Genre.values()) {
+        System.out.println("Valid genres:");
+        for (Genre genre : Genre.values()) {
             System.out.println(genre.name());
         }
 
         System.out.print("Genre: ");
-        Genre genre =  Translator.translateUserStringToEnum(Genre.class, scanner.nextLine());
-        if(genre == null) {
-            throw new RuntimeException("Non valid genre!");
+        Genre genre = Translator.translateUserStringToEnum(Genre.class, scanner.nextLine());
+        if (genre == null) {
+            System.out.println(Application.ANSI_RED + "Unknown genre" + Application.RESET);
+            this.build(user); // Recursion if genre is invalid.
         }
         book.setGenre(genre);
 
@@ -142,11 +171,11 @@ public class BookStructure implements Book {
         book.setDescription(scanner.nextLine());
 
         System.out.println("Add keywords");
-        for(Keywords keyword: Keywords.values()) {
+        for (Keywords keyword : Keywords.values()) {
             System.out.println(keyword.name());
         }
         System.out.print("How many keywords do you wish to add?");
-        for(int i = 0; i < Integer.parseInt(scanner.nextLine()); i++) {
+        for (int i = 0; i < Integer.parseInt(scanner.nextLine()); i++) {
             System.out.print("Add keyword: ");
             book.addKeyword(Translator.translateUserStringToEnum(Keywords.class, scanner.nextLine()));
         }
@@ -156,11 +185,22 @@ public class BookStructure implements Book {
         return book;
     }
 
+    /**
+     * Displays detailed information about a book using its ID.
+     *
+     * @param id   The unique identifier of the book.
+     * @param user The {@link User} requesting the book information.
+     */
     @Override
     public void bookInfo(String id, User user) {
         System.out.println(this.toString());
     }
 
+    /**
+     * Returns a string representation of the book object.
+     *
+     * @return A string containing the book's details such as author, title, genre, description, keywords, etc.
+     */
     @Override
     public String toString() {
         return "BookStructure{" +

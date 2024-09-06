@@ -5,33 +5,41 @@ import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.Authorization;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuContext;
 
+/**
+ * The Interface class implements the {@link UserInterface} and manages the main control flow of the application.
+ * It holds the current user session, menu context, and controls whether the interface is running.
+ */
 public class Interface implements UserInterface {
+
+    /**
+     * Indicates whether the interface is currently running.
+     */
     private boolean running = true;
+
+    /**
+     * The current user interacting with the interface.
+     */
     private User user;
+
+    /**
+     * The context for managing menus and their states.
+     */
     private final MenuContext menu = new MenuContext();
 
     /**
-     * Check if the interface should be running
+     * Checks if the interface is currently running.
      *
-     * @return Interface running
+     * @return {@code true} if the interface is running, {@code false} otherwise.
      */
     @Override
     public boolean isRunning() {
         return this.running;
     }
 
-    public void login() {
-
-    }
-
-    public void register() {
-
-    }
-
     /**
-     * Set the state of the interface
+     * Sets the running state of the interface.
      *
-     * @param running gets the current value of the state of the interface
+     * @param running A boolean indicating the new running state of the interface.
      */
     @Override
     public void setRunning(boolean running) {
@@ -39,9 +47,9 @@ public class Interface implements UserInterface {
     }
 
     /**
-     * Fetch Menu
+     * Retrieves the current menu context for the interface.
      *
-     * @return Interface userMenu
+     * @return The {@link MenuContext} used by the interface.
      */
     @Override
     public MenuContext getMenu() {
@@ -49,9 +57,9 @@ public class Interface implements UserInterface {
     }
 
     /**
-     * Fetch user
+     * Retrieves the current user interacting with the interface.
      *
-     * @return Interface user
+     * @return The {@link User} object representing the current user.
      */
     @Override
     public User getUser() {
@@ -59,7 +67,9 @@ public class Interface implements UserInterface {
     }
 
     /**
-     * Set the current user
+     * Sets the current user for the interface session.
+     *
+     * @param user The {@link User} to set as the current user.
      */
     @Override
     public void setUser(User user) {
@@ -67,12 +77,15 @@ public class Interface implements UserInterface {
     }
 
     /**
-     * Get the library instance through Interface
+     * Retrieves the library instance through the interface.
+     * This operation is currently unsupported and will throw an exception if invoked.
      *
-     * @return Interface libraryInstance
+     * @return This method does not return a value, as it always throws an exception.
+     * @throws UnsupportedOperationException when this method is called, indicating that the operation is not supported.
      */
     @Override
     public LibraryInstance getLibraryInstance() {
-        return null;
+        throw new UnsupportedOperationException("Unusable operation!");
     }
+
 }

@@ -1,5 +1,6 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.interfaceActions;
 
+import bg.tu.varna.SIT.s22621616.a2.Application;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.InterfaceInstance;
@@ -21,7 +22,7 @@ public class MenuExitState implements MenuState {
      */
     @Override
     public void execute(Tokenizer tokenizer, User user) {
-        System.out.println("Exiting program...");
+        System.out.println(Application.ANSI_GREEN + "Exiting program..." + Application.RESET);
         exit();
     }
 

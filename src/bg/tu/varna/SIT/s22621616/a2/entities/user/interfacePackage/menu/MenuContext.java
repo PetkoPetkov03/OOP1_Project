@@ -4,8 +4,16 @@ import bg.tu.varna.SIT.s22621616.a2.entities.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.MenuOptions;
 
+/**
+ * The MenuContext class manages the current state of the menu system.
+ * It holds the active menu state and provides methods to set the state,
+ * execute commands based on the current state, and retrieve the current
+ * menu state. This class facilitates the interaction between the user
+ * input and the corresponding menu actions.
+ */
 public class MenuContext {
     private MenuState menuState;
+    public static String GlobalError;
 
     public void setMenuState(MenuOptions option) {
         if (option == null) {

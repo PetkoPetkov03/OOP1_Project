@@ -1,5 +1,6 @@
 package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.userActions;
 
+import bg.tu.varna.SIT.s22621616.a2.Application;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.State;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.User;
@@ -25,6 +26,10 @@ public class LoginState implements MenuState {
             return;
         }
         List<String> inputs = tokenizer.getInputs();
+        if(inputs.size() < 2) {
+            System.out.println(Application.ANSI_RED + "Not enough inputs" + Application.RESET);
+            return;
+        }
         String username = inputs.getFirst();
         String password = inputs.getLast();
 

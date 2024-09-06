@@ -2,6 +2,7 @@ package bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.command
 
 import bg.tu.varna.SIT.s22621616.a2.entities.user.authorization.Authorization;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.InterfaceInstance;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuContext;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.MenuState;
 import bg.tu.varna.SIT.s22621616.a2.entities.libs.State;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.bookActions.*;
@@ -12,6 +13,7 @@ import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.userActions.LoginState;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.userActions.LogoutState;
 import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.userActions.RegisterState;
+import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.menu.commands.userActions.RemoveUserState;
 
 public enum MenuOptions implements State {
     OPEN {
@@ -138,9 +140,8 @@ public enum MenuOptions implements State {
          */
         public MenuState getState() {
             InterfaceInstance interfaceInstance = InterfaceInstance.getInstance();
-            if(interfaceInstance.getUser().getAuthorization() != Authorization.ADMIN){
-                System.out.println("You aren't authorized to run this command!");
-                return null;
+            if(interfaceInstance.getUser() == null || interfaceInstance.getUser().getAuthorization() != Authorization.ADMIN){
+                return new UnauthorizedUserState();
             }
             return getInstance();
         }
@@ -162,9 +163,12 @@ public enum MenuOptions implements State {
         public MenuState getState() {
 
             InterfaceInstance interfaceInstance = InterfaceInstance.getInstance();
-            if(interfaceInstance.getUser().getAuthorization() == null){
-                System.out.println("You aren't authorized to run this command!");
-                return null;
+            if(interfaceInstance.getUser() == null){
+                return new UnauthorizedUserState();
+            }
+
+            if(interfaceInstance.getUser().getAuthorization() == null) {
+                return new UnauthorizedUserState();
             }
             return getInstance();
         }
@@ -186,9 +190,8 @@ public enum MenuOptions implements State {
         @Override
         public MenuState getState() {
             InterfaceInstance interfaceInstance = InterfaceInstance.getInstance();
-            if(interfaceInstance.getUser().getAuthorization() == null){
-                System.out.println("You aren't authorized to run this command!");
-                return null;
+            if(interfaceInstance.getUser() == null || interfaceInstance.getUser().getAuthorization() == null) {
+                return new UnauthorizedUserState();
             }
             return (MenuState) getInstance();
         }
@@ -210,9 +213,9 @@ public enum MenuOptions implements State {
         @Override
         public MenuState getState() {
             InterfaceInstance interfaceInstance = InterfaceInstance.getInstance();
-            if(interfaceInstance.getUser().getAuthorization() == null){
-                System.out.println("You aren't authorized to run this command!");
-                return null;
+            if(interfaceInstance.getUser() == null || interfaceInstance.getUser().getAuthorization() == null){
+
+                return new UnauthorizedUserState();
             }
             return (MenuState) getInstance();
         }
@@ -231,13 +234,13 @@ public enum MenuOptions implements State {
         @Override
         public MenuState getState() {
             InterfaceInstance interfaceInstance = InterfaceInstance.getInstance();
-            if(interfaceInstance.getUser().getAuthorization() == null){
-                System.out.println("You aren't authorized to run this command!");
-                return null;
+            if(interfaceInstance.getUser() == null || interfaceInstance.getUser().getAuthorization() == null){
+                return new UnauthorizedUserState();
             }
             return new MenuFindBookByPerimeter();
         }
     },
+
     REGISTER {
         private final Authorization authorization = Authorization.ADMIN;
         @Override
@@ -255,9 +258,8 @@ public enum MenuOptions implements State {
         @Override
         public MenuState getState() {
             InterfaceInstance interfaceInstance = InterfaceInstance.getInstance();
-            if(interfaceInstance.getUser().getAuthorization() != authorization){
-                System.out.println("You aren't authorized to run this command!");
-                return null;
+            if(interfaceInstance.getUser() == null || interfaceInstance.getUser().getAuthorization() != authorization) {
+                return new UnauthorizedUserState();
             }
             return getInstance();
         }
@@ -299,6 +301,38 @@ public enum MenuOptions implements State {
         @Override
         public State getState() {
             return getInstance();
+        }
+    },
+
+    REMOVE_USER {
+        @Override
+        public Enum<?> getImportance() {
+            return CommandImportance.PRIMARY;
+        }
+
+        @Override
+        public State getState() {
+            return new RemoveUserState();
+        }
+    },
+
+    THROWABLE_STATE {
+        /**
+         * Retrieves the importance level of the command.
+         *
+         * @return The importance level of the command as an Enum.
+         */
+        @Override
+        public Enum<?> getImportance() {
+            return CommandImportance.PRIMARY;
+        }
+
+        /**
+         * @return MenuState instance
+         */
+        @Override
+        public State getState() {
+            return new ThrowableState(MenuContext.GlobalError);
         }
     }
 }
