@@ -1,4 +1,4 @@
-package bg.tu.varna.SIT.s22621616.a2.database;
+package bg.tu.varna.SIT.s22621616.a2.api.database;
 
 import bg.tu.varna.SIT.s22621616.a2.api.library.BookStructure;
 import bg.tu.varna.SIT.s22621616.a2.api.library.Genre;

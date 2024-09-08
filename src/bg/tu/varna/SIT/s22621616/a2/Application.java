@@ -6,7 +6,6 @@ import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.InterfaceInstance;
  * It initializes an instance of {@link InterfaceInstance} and starts its execution.
  */
 public class Application {
-
     /**
      * ANSI escape code for green text formatting.
      */

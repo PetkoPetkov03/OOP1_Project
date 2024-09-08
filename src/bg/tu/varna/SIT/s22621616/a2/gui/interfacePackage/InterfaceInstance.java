@@ -5,7 +5,7 @@ import bg.tu.varna.SIT.s22621616.a2.api.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.api.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.MenuContext;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.MenuOptions;
-import bg.tu.varna.SIT.s22621616.a2.database.FileManager;
+import bg.tu.varna.SIT.s22621616.a2.api.database.FileManager;
 
 import java.util.Scanner;
 
@@ -46,8 +46,8 @@ public class InterfaceInstance implements UserInterface {
      */
     private InterfaceInstance() {
         this.userInterface = new Interface();
-        this.fileManager.openLibraryDatabase("./Library.xml");
-        this.fileManager.openUserDatabaseFile("./Users.xml");
+        this.fileManager.openLibraryDatabase("Library.xml");
+        this.fileManager.openUserDatabaseFile("Users.xml");
     }
 
     /**

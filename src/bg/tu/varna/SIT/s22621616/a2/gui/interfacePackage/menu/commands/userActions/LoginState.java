@@ -6,7 +6,7 @@ import bg.tu.varna.SIT.s22621616.a2.api.libs.Tokenizer;
 import bg.tu.varna.SIT.s22621616.a2.api.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.InterfaceInstance;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.MenuState;
-import bg.tu.varna.SIT.s22621616.a2.database.XMLLibParser;
+import bg.tu.varna.SIT.s22621616.a2.api.database.XMLLibParser;
 
 import java.util.List;
 
