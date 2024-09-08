@@ -1,5 +1,5 @@
 package bg.tu.varna.SIT.s22621616.a2;
-import bg.tu.varna.SIT.s22621616.a2.entities.user.interfacePackage.InterfaceInstance;
+import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.InterfaceInstance;
 
 /**
  * The Application class serves as the entry point for running the program.
