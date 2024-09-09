@@ -1,4 +1,4 @@
-package bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.bookActions;
+package bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.libraryActions;
 
 import bg.tu.varna.SIT.s22621616.a2.api.library.LibraryInstance;
 import bg.tu.varna.SIT.s22621616.a2.api.libs.Tokenizer;

@@ -1,4 +1,4 @@
-package bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.bookActions;
+package bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.libraryActions;
 
 import bg.tu.varna.SIT.s22621616.a2.api.library.LibraryInstance;
 import bg.tu.varna.SIT.s22621616.a2.api.libs.Tokenizer;
@@ -6,14 +6,7 @@ import bg.tu.varna.SIT.s22621616.a2.api.authorization.User;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.MenuState;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.CommandImportance;
 
-public class MenuSortBooksState implements MenuState {
-
-    private void sort(Tokenizer tokenizer, User user) {
-        LibraryInstance libraryInstance = LibraryInstance.getInstance();
-
-        libraryInstance.sort(tokenizer);
-    }
-
+public class MenuFindBookByPerimeter implements MenuState {
     /**
      * execute command depending on the menu state.
      *
@@ -22,7 +15,7 @@ public class MenuSortBooksState implements MenuState {
      */
     @Override
     public void execute(Tokenizer tokenizer, User user) {
-        sort(tokenizer, user);
+        LibraryInstance.getInstance().findBooksByParameter(tokenizer);
     }
 
     /**

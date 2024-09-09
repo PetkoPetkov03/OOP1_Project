@@ -5,7 +5,7 @@ import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.InterfaceInstance;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.MenuContext;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.MenuState;
 import bg.tu.varna.SIT.s22621616.a2.api.libs.State;
-import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.bookActions.*;
+import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.libraryActions.*;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.interfaceActions.MenuCloseFilesState;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.interfaceActions.MenuDisplayHelpState;
 import bg.tu.varna.SIT.s22621616.a2.gui.interfacePackage.menu.commands.interfaceActions.MenuExitState;
